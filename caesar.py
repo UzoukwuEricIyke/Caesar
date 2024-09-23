@@ -1,4 +1,14 @@
+from collections import Counter
 import string
+
+# Frequency of letters in English, approximated
+ENGLISH_LETTER_FREQ = {
+    'E': 12.70, 'T': 9.06, 'A': 8.17, 'O': 7.51, 'I': 6.97, 'N': 6.75,
+    'S': 6.33, 'H': 6.09, 'R': 5.99, 'D': 4.25, 'L': 4.03, 'C': 2.78,
+    'U': 2.76, 'M': 2.41, 'W': 2.36, 'F': 2.23, 'G': 2.02, 'Y': 1.97,
+    'P': 1.93, 'B': 1.49, 'V': 0.98, 'K': 0.77, 'J': 0.15, 'X': 0.15,
+    'Q': 0.10, 'Z': 0.07
+}
 
 # Function to handle encryption and decryption with Caesar Cipher
 def caesar_cipher(text, shift, decrypt=False, case_insensitive=False):
@@ -16,6 +26,48 @@ def caesar_cipher(text, shift, decrypt=False, case_insensitive=False):
         else:
             result += char  # Keep non-alphabetic characters as they are
     return result
+
+# Function to calculate frequency of letters in a given text
+def letter_frequency(text):
+    # Remove non-alphabetic characters and convert to uppercase
+    text = ''.join(filter(str.isalpha, text.upper()))
+    if len(text) == 0:
+        return {}
+    letter_counts = Counter(text)
+    total_letters = sum(letter_counts.values())
+    
+    # Convert counts to percentages
+    frequencies = {letter: (count / total_letters) * 100 for letter, count in letter_counts.items()}
+    return frequencies
+
+# Function to compute a score between two frequency distributions
+def score_frequencies(text_freq, english_freq=ENGLISH_LETTER_FREQ):
+    score = 0
+    for letter in english_freq:
+        text_freq_value = text_freq.get(letter, 0)
+        score += abs(english_freq[letter] - text_freq_value)  # Difference in frequencies
+    return score
+
+# Function to crack Caesar Cipher using frequency analysis
+def crack_caesar_cipher(ciphertext):
+    # Generate letter frequency for the ciphertext
+    best_shift = None
+    best_score = float('inf')
+    decrypted_message = ""
+
+    # Try all possible shifts (0-25)
+    for shift in range(26):
+        decrypted_attempt = caesar_cipher(ciphertext, shift, decrypt=True)
+        text_freq = letter_frequency(decrypted_attempt)
+        current_score = score_frequencies(text_freq)
+
+        if current_score < best_score:
+            best_score = current_score
+            best_shift = shift
+            decrypted_message = decrypted_attempt
+
+    print(f"\nBest shift found: {best_shift} (Shift by {best_shift})")
+    print("Decrypted message:", decrypted_message)
 
 # Function to validate inputs
 def validate_shift(shift):
@@ -63,11 +115,6 @@ def save_text_to_file(filename, text, password=None):
             file.write(password + "\n")
         file.write(text)
     print(f"Text successfully saved to {filename}")
-
-# Function to crack Caesar Cipher using frequency analysis (placeholder)
-def crack_caesar_cipher(ciphertext):
-    print("Cracking the cipher using frequency analysis is a complex feature.")
-    print("Future implementation will be added here.")
 
 # Function to visually represent the Caesar Cipher shift
 def display_shift_visual(text, shift):
