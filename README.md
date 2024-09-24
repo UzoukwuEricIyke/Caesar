@@ -80,11 +80,9 @@ L -> O
 
 O -> R
 
-Contributing
 Feel free to fork this project and submit pull requests. I’m open to contributions, especially to improve the *frequency analysis* cracking algorithm or introduce new features.
 
 
-Contact
 If you have any questions or feedback, feel free to reach out to me via LinkedIn - https://www.linkedin.com/in/uzoukwu-eric-ikenna/ or open an issue in this repository.
 
 Notes:
