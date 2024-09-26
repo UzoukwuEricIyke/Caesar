@@ -1,7 +1,3 @@
-Welcome to My Caesar Cipher Encryption/Decryption Tool. This Python-based tool allows users to encrypt, decrypt, and even crack messages encrypted with the Caesar Cipher. It supports various features such as handling negative shifts, case insensitivity, and frequency analysis-based cipher cracking.
-
-This project is part of my internship with Prodigy InfoTech, and I’m excited to share it with the community.
-
 Features
 - Encrypt Messages: Secure your message with this Caesar Cipher, using customizable shift values.
 - Decrypt Messages: Decrypt messages encrypted with the Caesar Cipher by providing the correct shift value.
