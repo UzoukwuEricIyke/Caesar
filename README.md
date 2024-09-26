@@ -16,12 +16,12 @@ No additional dependencies are required.
 
 How to Use
 1. Clone the repository:
-   git clone https://github.com/UzoukwuEricIyke/PRODIGY_CS_01
+   `git clone https://github.com/UzoukwuEricIyke/PRODIGY_CS_01`
 
-2. cd caesarcipher.py
+2. `cd caesarcipher.py`
 
 3. Run the program:
-   python caesarcipher.py
+   `python caesarcipher.py`
 
 4. Menu Options:
    After launching, you will be greeted with a menu.
@@ -81,8 +81,11 @@ O -> R
 Feel free to fork this project and submit pull requests. I’m open to contributions, especially to improve the *frequency analysis* cracking algorithm or introduce new features.
 
 
-If you have any questions or feedback, feel free to reach out to me via LinkedIn - https://www.linkedin.com/in/uzoukwu-eric-ikenna/ or open an issue in this repository.
+If you have any questions or feedback, please contact me or open an issue in this repository:
+
+  *Uzoukwu Eric Ikenna*  
+  Email: [uzoukwuericiyke@yahoo.com](mailto:uzoukwuericiyke@yahoo.com)
+  LinkedIn - https://www.linkedin.com/in/uzoukwu-eric-ikenna/
 
 Notes:
 Make sure to update the `git clone` URL to match your repository.
-You can add more details, such as images or GIFs showing the tool in action, in the README if desired.
